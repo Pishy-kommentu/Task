@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  fastapi-app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "${APP_PORT}:8000"
+    depends_on:
+      - redis
+  redis:
+    image: "redis:latest"
+    ports:
+      - "${REDIS_PORT}:6379"
